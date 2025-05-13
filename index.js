@@ -14,7 +14,10 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static("public")); // خدمة الملفات الثابتة من مجلد public
 
-// Routes
+//testing routes
+app.get("/api/test", async(req, res) => {
+  res.send("Hello from Kitaabi-server testing");
+});
 
 // Stripe payment route to create checkout session
 app.post("/api/create-checkout-session", async (req, res) => {
@@ -63,10 +66,7 @@ app.get("/api/check-payment/:sessionId", async (req, res) => {
   }
 });
 
-//testing routes
-app.get("/api/test", (req, res) => {
-  return "Hello from Kitaabi-server testing";
-});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
