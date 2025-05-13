@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const express = require("express");
@@ -7,8 +7,7 @@ const bodyParser = require("body-parser");
 const path = require("path"); // لاستعماله في توجيه المسارات بشكل صحيح
 
 const app = express();
-const PORT = 4242;
-
+const PORT = process.env.PORT || 4242;
 
 // Middleware
 app.use(cors());
@@ -64,6 +63,10 @@ app.get("/api/check-payment/:sessionId", async (req, res) => {
   }
 });
 
+//testing routes
+app.get("/api/test", (req, res) => {
+  return "Hello from Kitaabi-server testing";
+});
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
